@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">pyrozhock</string>
+    <string name="recycler_view_item_event_sample_text">event sample</string>
+    <string name="main_toolbar_add_button">add_event</string>
+</resources>
