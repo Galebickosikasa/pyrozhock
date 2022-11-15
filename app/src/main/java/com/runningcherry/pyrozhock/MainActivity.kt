@@ -1,7 +1,9 @@
 package com.runningcherry.pyrozhock
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -21,7 +23,9 @@ class MainActivity : AppCompatActivity() {
         toolbar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.add -> {
-                    // TODO
+                    Log.i("kek", "tab to plus")
+                    val intent = Intent(this, AddEditEventActivity::class.java)
+                    startActivity(intent)
                 }
             }
             false
