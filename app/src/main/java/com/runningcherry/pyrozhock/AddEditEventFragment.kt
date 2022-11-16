@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.TextView
 import com.google.android.material.datepicker.MaterialDatePicker
+import com.google.android.material.timepicker.MaterialTimePicker
+import com.google.android.material.timepicker.TimeFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -30,18 +32,47 @@ class AddEditEventFragment : Fragment() {
         editDate.text = dateFormatter.format(Date())
 
         editDate.setOnClickListener {
-            val datePicker =
-                MaterialDatePicker.Builder.datePicker()
-                    .setTitleText("Select date")
-                    .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
-                    .build()
-
-            datePicker.addOnPositiveButtonClickListener {
-                editDate.text = dateFormatter.format(Date(it))
-            }
-
-            datePicker.show(requireActivity().supportFragmentManager, "date picker")
+            onDateClick(editDate, dateFormatter)
         }
+
+        startTime.setOnClickListener {
+            onTimeClick(startTime)
+        }
+
+        endTime.setOnClickListener {
+            onTimeClick(endTime)
+        }
+    }
+
+    private fun onDateClick(date: TextView, dateFormatter: SimpleDateFormat) {
+        val datePicker =
+            MaterialDatePicker.Builder.datePicker()
+                .setTitleText("Select date")
+                .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
+                .build()
+
+        datePicker.addOnPositiveButtonClickListener {
+            date.text = dateFormatter.format(Date(it))
+        }
+
+        datePicker.show(requireActivity().supportFragmentManager, "date picker")
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun onTimeClick(time: TextView) {
+        val timePicker =
+            MaterialTimePicker.Builder()
+                .setTimeFormat(TimeFormat.CLOCK_24H)
+                .setHour(12)
+                .setMinute(10)
+                .setTitleText("Select time")
+                .build()
+
+        timePicker.addOnPositiveButtonClickListener {
+            time.text = "${timePicker.hour}:${timePicker.minute}"
+        }
+
+        timePicker.show(requireActivity().supportFragmentManager, "time picker")
 
     }
 
