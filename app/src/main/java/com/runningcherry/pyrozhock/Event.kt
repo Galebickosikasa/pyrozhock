@@ -4,7 +4,7 @@ import java.util.Date
 
 data class Event (
     var name : String,
-    private var date: Date,
+    var date: String,
     var start : String,
     var end : String,
     var done: Boolean = false

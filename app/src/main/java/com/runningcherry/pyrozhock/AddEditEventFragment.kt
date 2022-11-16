@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -19,6 +20,7 @@ class AddEditEventFragment : Fragment() {
     private lateinit var editDate: TextView
     private lateinit var startTime: TextView
     private lateinit var endTime: TextView
+    private lateinit var doneBtn: Button
 
     @SuppressLint("SimpleDateFormat")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -27,6 +29,7 @@ class AddEditEventFragment : Fragment() {
         editDate = requireView().findViewById(R.id.edit_date)
         startTime = requireView().findViewById(R.id.start_time)
         endTime = requireView().findViewById(R.id.end_time)
+        doneBtn = requireView().findViewById(R.id.done_btn)
 
         val dateFormatter = SimpleDateFormat("dd-MM-yyyy")
         editDate.text = dateFormatter.format(Date())
@@ -41,6 +44,10 @@ class AddEditEventFragment : Fragment() {
 
         endTime.setOnClickListener {
             onTimeClick(endTime)
+        }
+
+        doneBtn.setOnClickListener {
+            val event = Event(editName.toString(), editDate.toString(), startTime.toString(), endTime.toString())
         }
     }
 

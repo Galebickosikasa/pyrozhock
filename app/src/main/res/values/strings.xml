@@ -1,10 +1,11 @@
 <resources>
     <string name="app_name">pyrozhock</string>
     <string name="recycler_view_item_event_sample_text">event sample</string>
-    <string name="main_toolbar_add_button">add_event</string>
+    <string name="main_toolbar_add_btn">add_event</string>
+    <string name="main_toolbar_select_date_btn">select date</string>
     <string name="add_edit_event_name">Название ивента</string>
     <string name="add_edit_event_date">Тут будет дата ивента</string>
     <string name="add_edit_event_start_time">Начало ивента</string>
     <string name="add_edit_event_end_time">Конец ивента</string>
-    <string name="add_edit_event_done_button">Готово</string>
+    <string name="add_edit_event_done_btn">Готово</string>
 </resources>
